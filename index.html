@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="assets/css/style.css">
+    <title>calculadora</title>
+</head>
+
+<body onkeydown="keyEvent(event)" >
+    <main class="calculadora">
+        <div class="pantalla">
+            <p id="pantallaAuxiliar"></p>
+            <p id="pantalla">0</p>
+        </div>
+        <div class="botones">
+            
+            <button class="boton Resaltar"onclick=limpiarTodo()>AC</button>
+            <button class="boton Resaltar"onclick=limpiarPantalla()>C</button>
+            <button class="boton Resaltar" value="/"onclick=guardarOperadores(value)>÷</button>
+            <button class="boton Resaltar" value="*" onclick=guardarOperadores(value)>×</button>
+
+            <button class="boton" value="7" onclick=agregarPantalla(value)>7</button>
+            <button class="boton" value="8" onclick=agregarPantalla(value)>8</button>
+            <button class="boton"value="9" onclick=agregarPantalla(value)>9</button>
+            <button class="boton Resaltar"value="+"onclick=guardarOperadores(value)>+</button>
+            
+            <button class="boton" value="4" onclick=agregarPantalla(value)>4</button>
+            <button class="boton" value="5" onclick=agregarPantalla(value)>5</button>
+            <button class="boton" value="6" onclick=agregarPantalla(value)>6</button>
+            <button class="boton Resaltar"value="-"onclick=guardarOperadores(value)>-</button>
+
+            <button class="boton" value="1" onclick=agregarPantalla(value)>1</button>
+            <button class="boton" value="2" onclick=agregarPantalla(value)>2</button>
+            <button class="boton" value="3" onclick=agregarPantalla(value)>3</button>
+            <button class="boton Resaltar">%</button>
+
+            <button class="boton" value="0" onclick=agregarPantalla(value)>0</button>
+            <button class="boton">.</button>
+            <button class="boton Resaltar" onclick=clickIgual()>=</button>
+        </div>
+    </main>
+    <script src="assets/js/main.js"></script>
+    <script src="./Prueba.js"></script>
+</body>
+</html>

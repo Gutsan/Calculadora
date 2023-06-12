@@ -1,0 +1,71 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+:root{
+    --color1:#CFCBD2;
+    --color2:aqua;
+    --color3:#fff;
+    --color4:#CB98ED;
+}
+body{
+height: 100vh;
+width: 100vw;
+display: flex;
+justify-content: center;
+align-items: center;
+font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
+.calculadora{
+    height: 40em;
+    width: 30em;
+    background-color: var(--color1);
+    border-radius:2em ;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+}
+.pantalla{
+    height: 25%;
+    width: 80%;
+    border-radius: 5px;
+    display: flex;
+    flex-direction: column;
+    align-items: end;
+    justify-content: end;
+    /* border: solid 1px #000 ; */
+}
+
+#pantalla{
+font-size: 5em;
+}
+#pantallaAuxiliar{
+    font-size: 2em;
+    opacity: 50%;
+    }
+
+.botones{
+    height: 70%;
+    width: 80%;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: start;
+    justify-content: center;
+    gap: 1rem;
+}
+.boton{
+    height: 15%;
+    width: 20%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 200%;
+    border-radius: 1em;
+    border: none;
+}
+
+.Resaltar{
+    background-color: var(--color4);
+    flex-grow:1;
+}
