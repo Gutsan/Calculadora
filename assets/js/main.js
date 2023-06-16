@@ -2,11 +2,12 @@ let valorPantalla = document.querySelector("#pantalla")
 let valorPila = null
 let operador = ""
 let modoEscritura = true //Modo en el que se encuentra pantalla (true:Escritura False:ModoResultado)
-let pantallaAuxiliar=document.querySelector("#pantallaAuxiliar")
+let pantallaAuxiliar = document.querySelector("#pantallaAuxiliar")
 
 // Evento cuando se presiona una de las teclas de operadores o numericas
 function keyEvent(event) {
     var key = event.keyCode
+    console.log(key)
     switch (key) {
         case 111:
             guardarOperadores("/")
@@ -23,9 +24,22 @@ function keyEvent(event) {
         case 13:
             clickIgual()
             break
+        case 110:
+            agregarPantalla(".")
+            break
+        case 46:
+            limpiarTodo()
+            break
+        case 8:
+            if (valorPantalla.innerHTML.length === 1) {
+                valorPantalla.innerHTML = 0
+            } else {
+                valorPantalla.innerHTML = valorPantalla.innerHTML.slice(0, -1)
+            }
+            break
         default:
-            if (key>96 && key<106){
-                let numero=key-96
+            if (key > 95 && key < 106) {
+                let numero = key - 96
                 agregarPantalla(numero)
             }
     }
@@ -37,7 +51,7 @@ function agregarPantalla(valor) {
     if (modoEscritura) {
         valorPantalla.innerHTML = 0
         modoEscritura = false
-        pantallaAuxiliar.innerHTML=""
+        pantallaAuxiliar.innerHTML = ""
     }
     pantallaActual = valorPantalla.innerHTML
     if (pantallaActual.length >= 9) {
@@ -60,7 +74,7 @@ function limpiarPantalla() {
 function limpiarTodo() {
     valorPantalla.innerHTML = 0
     valorPila = null
-    pantallaAuxiliar.innerHTML=""
+    pantallaAuxiliar.innerHTML = ""
 }
 
 //Función de los operadores
@@ -68,7 +82,7 @@ function guardarOperadores(valor) {
     agregarPila(valorPantalla.innerHTML)
     valorPantalla.innerHTML = 0
     operador = valor
-    pantallaAuxiliar.innerHTML=pantallaAuxiliar.innerHTML + valor
+    pantallaAuxiliar.innerHTML = pantallaAuxiliar.innerHTML + valor
 }
 
 //Guardar valores en pila
@@ -79,7 +93,7 @@ function agregarPila(valor) {
     else {
         valorPila = calcular(valorPila, operador, valor)
     }
-    pantallaAuxiliar.innerHTML=valorPila
+    pantallaAuxiliar.innerHTML = valorPila
 }
 
 //Función para calcular según el tipo de operador
@@ -103,16 +117,39 @@ function calcular(valor1, operador, valor2) {
 }
 
 function clickIgual() {
+    if (operador === "") {
+        return
+    }
     let resultadoFinal
     resultadoFinal = calcular(valorPila, operador, valorPantalla.innerHTML)
+
     if (String(resultadoFinal).length > 9 || isNaN(resultadoFinal)) {
-        valorPantalla.innerHTML = "ERR!"
-        pantallaAuxiliar.innerHTML=""
+
+        if (isDecimal(resultadoFinal)) {
+            pantallaAuxiliar.innerHTML = pantallaAuxiliar.innerHTML + valorPantalla.innerHTML
+            console.log(valorPantalla.innerHTML)
+            valorPantalla.innerHTML = resultadoFinal.toFixed(5)
+        } else {
+            valorPantalla.innerHTML = "ERR!"
+            pantallaAuxiliar.innerHTML = ""
+        }
     }
     else {
-        pantallaAuxiliar.innerHTML=pantallaAuxiliar.innerHTML+valorPantalla.innerHTML
+        pantallaAuxiliar.innerHTML = pantallaAuxiliar.innerHTML + valorPantalla.innerHTML
         valorPantalla.innerHTML = resultadoFinal
     }
     valorPila = null
+    operador = ""
     modoEscritura = true
+}
+
+function isDecimal(numero) {
+
+    if (numero % 1 != 0) {
+        return true
+    }
+}
+
+function redondearlimt(num) {//Funcion para redondear al limite de 8 caracteres
+    let entero = numero - 1
 }
