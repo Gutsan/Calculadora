@@ -69,3 +69,8 @@ font-size: 5em;
     background-color: var(--color4);
     flex-grow:1;
 }
+@media(max-width:576px){
+    body{
+        background-color: var(--color1);
+    }
+}
